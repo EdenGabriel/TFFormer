@@ -1,8 +1,7 @@
 [TCSVT 2023] TFFomer: Cross Time-Frequency Transformer for Temporal Action Localization
 
 # TFFormer: Cross Time-Frequency Transformer for Temporal Action Localization
-
-
+<img src="./visualization results.gif" width=720px height=360px align="center" />
 ### Introduction
 This code repo implements TFFormer in _TCSVT 2023_, the first attempt to explore the cross-fusion of multi-scale time and frequency-domain features for temporal action localization. TFFormer achieves an average mAP of 23.2% on Ego4D and 25.6% on EPIC-Kitchens 100, which outperform previous state-of-the-arts by a large margin. It also obtains competitive results on ActivityNet v1.3 and THUMOS14, with an average mAP of 36.2% and 67.8%.
 ![pipeline](./teaser.png)
