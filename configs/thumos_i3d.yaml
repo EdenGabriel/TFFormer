@@ -1,0 +1,60 @@
+dataset_name: thumos
+train_split: ['validation']
+val_split: ['test']
+init_rand_seed: 3407 #3407 
+dataset: {
+  json_file: /ssd1/yj/DATA/thumos/annotations/thumos14.json,
+  feat_folder: /ssd1/yj/DATA/thumos/i3d_features,
+  file_prefix: ~,
+  file_ext: .npy,
+  num_classes: 20,
+  input_dim: 2048,
+  feat_stride: 4,
+  num_frames: 16,
+  # serve as data augmentation
+  trunc_thresh: 0.5,  # 0.5
+  crop_ratio: [0.9, 1.0],
+  max_seq_len: 2304,
+}
+model: {
+  fpn_type: fusion, #fusion  fpn  identity
+  max_buffer_len_factor: 6.0,
+  n_mha_win_size: 7,  
+}
+
+opt: {
+  learning_rate: 0.00011, #0.00011
+  epochs: 25,  
+  weight_decay: 0.05, 
+  warmup_epochs: 10,
+}
+loader: {
+  batch_size: 2,
+}
+train_cfg: {
+  init_loss_norm: 100, 
+  clip_grad_l2norm: 1.0,
+  cls_prior_prob: 0.01,
+  center_sample: radius, #
+  center_sample_radius: 1.5 ,  #1.5
+  dropout: 0.1,    
+  # ratio for drop path
+  droppath: 0.25, 
+  # if to use label smoothing (>0.0)
+  label_smoothing: 0.0,   #0.15
+}
+test_cfg: {
+  voting_thresh: 0.8, 
+  pre_nms_topk: 2000, 
+  max_seg_num: 2000,
+  min_score: 0.001, 
+  nms_sigma: 0.505, 
+  # when using external scores, our model is generating "proposals"
+  # multiclass_nms: False,
+  # ext_score_file: /ssd1/yj/DATA/thumos/annotations/thumos14_cls_scores.pkl,
+  # comment out L47-48 and uncomment L50 to disable score fusion
+  multiclass_nms: True,
+  
+}
+output_folder: ./thumos_ckpt_level/
+# output_folder: ./ckpt/ablation/
