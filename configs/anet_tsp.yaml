@@ -2,8 +2,8 @@ dataset_name: anet
 train_split: ['training']
 val_split: ['validation']
 dataset: {
-  json_file: /ssd1/yj/DATA/anet_1.3/annotations/anet1.3_tsp_filtered.json,
-  feat_folder: /ssd1/yj/DATA/anet_1.3/tsp_features,
+  json_file: /data/anet_1.3/annotations/anet1.3_tsp_filtered.json,
+  feat_folder: /data/anet_1.3/tsp_features,
   file_prefix: v_,
   file_ext: .npy,
   num_classes: 1,
@@ -20,7 +20,6 @@ dataset: {
 model: {
   fpn_type: fusion, #identity
   max_buffer_len_factor: 1.0,
-  # 192 - 96 - 48 - 24 - 12 - 6
   n_mha_win_size: [7, 7, 7, 7, 7, -1],
   # shrink the model for reduced input feature channels
   n_head: 4,
@@ -29,23 +28,14 @@ model: {
   head_dim: 256,
   use_abs_pe: True,
 }
-# opt: {
-#   learning_rate: 0.001,
-#   epochs: 10,
-#   weight_decay: 0.05,
-# }
 opt: {
   learning_rate: 0.001,
   epochs: 10,
   weight_decay: 0.05,
   warmup_epochs: 10,
 }
-# TODO
-# 20:47  warmup10 bsz:24  35.97
-# 20:53  warmup10 bsz:16  35.91
-# 22:07  warmup10+10 bsz:24
 loader: {
-  batch_size: 24, #24:36.14
+  batch_size: 24, 
 }
 train_cfg: {
   init_loss_norm: 200,
@@ -60,15 +50,15 @@ train_cfg: {
 
 # similar to THUMOS
 test_cfg: {
-  voting_thresh: 0.9, #0.9
-  pre_nms_topk: 5000, #5000
+  voting_thresh: 0.9, 
+  pre_nms_topk: 5000, 
   # max of 100 predictions per video
-  max_seg_num: 200, #300
+  max_seg_num: 200, 
   min_score: 0.001,
   # score fusion
   multiclass_nms: False,
-  nms_sigma : 0.7,  #0.65
-  ext_score_file: /ssd1/yj/DATA/anet_1.3/annotations/cuhk_val_simp_share.json,
+  nms_sigma : 0.7,  
+  ext_score_file: /data/anet_1.3/annotations/cuhk_val_simp_share.json,
   duration_thresh: 0.1, #0.001
 }
 output_folder: ./anet_ckpt/

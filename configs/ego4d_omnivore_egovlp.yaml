@@ -2,16 +2,11 @@ dataset_name: ego4d
 train_split: ['training']
 val_split: ['validation']
 dataset: {
-  # json_file: ./data/ego4d/annotations/ego4d.json,
-  # feat_folder: [
-  #   './data/ego4d/omnivore_features', 
-  #   './data/ego4d/egovlp_features'
-  # ],
   # converted json&features
-  json_file: /ssd1/yj/ego4d/converted/annotations/ego4d.json,
+  json_file: /data/ego4d/converted/annotations/ego4d.json,
   feat_folder: [
-    '/ssd1/yj/ego4d/converted/features/omnivore_features', 
-    '/ssd1/yj/ego4d/converted/features/egovlp_to_omnivore_slowfast_features'
+    '/data/ego4d/converted/features/omnivore_features', 
+    '/data/ego4d/converted/features/egovlp_to_omnivore_slowfast_features'
   ],
   file_prefix: ~,
   file_ext: .npy,

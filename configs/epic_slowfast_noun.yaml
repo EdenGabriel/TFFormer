@@ -3,8 +3,8 @@ train_split: ['training']
 val_split: ['validation']
 init_rand_seed: 1004
 dataset: {
-  json_file: /ssd1/yj/DATA/epic_kitchens_slowfast/annotations/epic_kitchens_100_noun.json,
-  feat_folder: /ssd1/yj/DATA/epic_kitchens_slowfast/features,
+  json_file: /data/epic_kitchens_slowfast/annotations/epic_kitchens_100_noun.json,
+  feat_folder: /data/epic_kitchens_slowfast/features,
   file_prefix: ~,
   file_ext: .npz,
   num_classes: 300,
@@ -20,19 +20,13 @@ model: {
   regression_range: [[0, 4], [2, 8], [4, 16], [8, 32], [16, 64], [32, 10000]],
   fpn_type: fusion, # identity, fpn, fusion
   max_buffer_len_factor: 4.0,
-  n_mha_win_size: -1, #9(bs 4  1.25  epoch35-22.78)  7 bs4 1.25 epoch35 22.91
+  n_mha_win_size: -1, 
 }
 opt: {
   learning_rate: 0.0001,
   epochs: 30,
   weight_decay: 0.05,
 }
-# opt: {
-#   learning_rate: 0.0001,
-#   epochs: 25,
-#   weight_decay: 0.05,
-#   warmup_epochs: 10,
-# }
 loader: {
   batch_size: 4,
 }
@@ -47,10 +41,9 @@ train_cfg: {
 }
 test_cfg: {
   pre_nms_topk: 5000,
-  max_seg_num: 3000,  #3000
+  max_seg_num: 3000,  
   min_score: 0.001,
-  nms_sigma : 0.35,   #0.35
+  nms_sigma : 0.35,  
   multiclass_nms: True
 }
-# output_folder: ./ckpt/
-output_folder: ./epic_noun_level/
+output_folder: ./ckpt/

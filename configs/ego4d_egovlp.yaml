@@ -2,8 +2,8 @@ dataset_name: ego4d
 train_split: ['training']
 val_split: ['validation']
 dataset: {
-  json_file: /ssd1/yj/ego4d/converted/annotations/ego4d.json,
-  feat_folder: '/ssd1/yj/ego4d/converted/features/egovlp_features',
+  json_file: /data/ego4d/converted/annotations/ego4d.json,
+  feat_folder: '/data/ego4d/converted/features/egovlp_features',
   file_prefix: ~,
   file_ext: .npy,
   num_classes: 110,

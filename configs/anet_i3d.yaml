@@ -8,8 +8,8 @@ train_split: ['training']
 val_split: ['validation']
 init_rand_seed: 3407
 dataset: {
-  json_file: /ssd1/yj/DATA/anet_1.3/annotations/anet1.3_i3d_filtered.json,
-  feat_folder: /ssd1/yj/DATA/anet_1.3/i3d_features,
+  json_file: /data/anet_1.3/annotations/anet1.3_i3d_filtered.json,
+  feat_folder: /data/anet_1.3/i3d_features,
   file_prefix: v_,
   file_ext: .npy,
   num_classes: 1,
@@ -25,15 +25,14 @@ dataset: {
   force_upsampling: True,
 }
 model: {
-  fpn_type: fusion, #identity
+  fpn_type: fusion, 
   max_buffer_len_factor: 1.0,
-  # 192 - 96 - 48 - 24 - 12 - 6
-  n_mha_win_size: [7, 7, 7, 7, 7, -1], #[11, 11, 11, 11, -1, -1],
+  n_mha_win_size: [7, 7, 7, 7, 7, -1],
   n_head: 4,
   embd_dim: 256, 
   fpn_dim: 256, 
   head_dim: 256, 
-  use_abs_pe: True, #False  True
+  use_abs_pe: True, 
 }
 opt: {
   learning_rate: 0.001,
@@ -41,7 +40,7 @@ opt: {
   weight_decay: 0.05,
 }
 loader: {
-  batch_size: 24, #24
+  batch_size: 24, 
 }
 train_cfg: {
   init_loss_norm: 200,
@@ -59,12 +58,12 @@ test_cfg: {
   voting_thresh: 0.9,
   pre_nms_topk: 5000,
   # max of 100 predictions per video
-  max_seg_num: 300, #100
+  max_seg_num: 300, 
   min_score: 0.001,
   # score fusion
   multiclass_nms: False,
-  nms_sigma : 0.75, # 0.75
-  ext_score_file: /ssd1/yj/DATA/anet_1.3/annotations/cuhk_val_simp_share.json,
+  nms_sigma : 0.75, 
+  ext_score_file: /data/anet_1.3/annotations/cuhk_val_simp_share.json,
   duration_thresh: 0.001,
 }
 output_folder: ./ckpt/

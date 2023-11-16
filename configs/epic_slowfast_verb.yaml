@@ -3,33 +3,28 @@ train_split: ['training']
 val_split: ['validation']
 init_rand_seed: 1004
 dataset: {
-  json_file: /ssd1/yj/DATA/epic_kitchens_slowfast/annotations/epic_kitchens_100_verb.json,
-  feat_folder: /ssd1/yj/DATA/epic_kitchens_slowfast/features,
+  json_file: /data/epic_kitchens_slowfast/annotations/epic_kitchens_100_verb.json,
+  feat_folder: /data/epic_kitchens_slowfast/features,
   file_prefix: ~,
   file_ext: .npz,
   num_classes: 97,
-  # 特征的输入维度
   input_dim: 2304,
   feat_stride: 16,
   num_frames: 32,
   default_fps: 30,
-  # train时会对输入的seq进行随机截断，截断后计算intersection between sampled window and all segments，然后选择超出trunc_thresh的范围
   trunc_thresh: 0.3,
-  # 如果没有超出max_seq,选择随机截断的范围
   crop_ratio: [0.9, 1.0],
-  # 最大的输入序列长度
   max_seq_len: 2304,
 }
 model: {
   regression_range: [[0, 4], [2, 8], [4, 16], [8, 32], [16, 64], [32, 10000]],
   fpn_type: fusion, #identity,fpn, fusion
   max_buffer_len_factor: 4.0,
-  n_mha_win_size: -1, #-1,5,7,19,25,72
+  n_mha_win_size: -1, 
 } 
 opt: {
   learning_rate: 0.0001,
   # max_epochs = epochs + warm_up epochs
-  # ! 设30 取30/35进行inference
   epochs: 30,
   weight_decay: 0.05,
 }
@@ -41,7 +36,7 @@ train_cfg: {
   clip_grad_l2norm: 1.0,
   cls_prior_prob: 0.01,
   center_sample: radius,
-  center_sample_radius: 1.25, # 2.0↓ 1.5↓ // 1.25 respond to 24.44
+  center_sample_radius: 1.25, 
 }
 test_cfg: {
   pre_nms_topk: 5000,
@@ -50,5 +45,4 @@ test_cfg: {
   nms_sigma : 0.4,
   multiclass_nms: True
 }
-# output_folder: ./ckpt/
 output_folder: ./ckpt/
