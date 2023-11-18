@@ -43,4 +43,4 @@ If you are using our code, please consider citing the following paper.
 }
 ```
 
-#### The implementation of this code is built upon [ActionFormer](https://github.com/happyharrycn/actionformer_release), and we would like to express gratitude for the open-source contribution of [ActionFormer](https://github.com/happyharrycn/actionformer_release).
+#### The implementation of this code is built upon [ActionFormer](https://github.com/happyharrycn/actionformer_release) and our [TransGMC](https://github.com/EdenGabriel/TransGMC), and we would like to express gratitude for the open-source contribution of [ActionFormer](https://github.com/happyharrycn/actionformer_release).
